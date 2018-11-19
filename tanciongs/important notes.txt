@@ -1,0 +1,15 @@
+btn Refresh button //employee tab 
+
+EmployeeModel em = new EmployeeModel();
+        ResultSet rs = null;
+        String val = em.determineBranch(name);
+        
+         if(val.compareTo("1")==0){
+            comboBranch.setSelectedIndex(0);
+            rs = em.viewLeyte("1");
+        }else{
+            comboBranch.setSelectedIndex(1);
+            rs = em.viewLeyte("2");
+        }
+        
+        tblEmp.setModel(DbUtils.resultSetToTableModel(rs));
