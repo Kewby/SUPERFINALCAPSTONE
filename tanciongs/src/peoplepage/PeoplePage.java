@@ -363,7 +363,7 @@ public class PeoplePage extends javax.swing.JFrame {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         AdminPage ap = new AdminPage(this.getName());
-        ap.getLblUser().setText("Welcome "+this.getName());
+        ap.getLblUser().setText("Welcome, "+this.getName());
         ap.setVisible(true);
 
         this.setVisible(false);

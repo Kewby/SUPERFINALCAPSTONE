@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 /**
@@ -74,9 +75,9 @@ public class AddProduct extends javax.swing.JFrame {
         txtStandardCost = new javax.swing.JTextField();
         txtMarkupCost = new javax.swing.JTextField();
         background_addProduct = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        AddEmpAddButton = new javax.swing.JButton();
+        AddEmpClearButton = new javax.swing.JButton();
+        AddEmpCancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -134,32 +135,32 @@ public class AddProduct extends javax.swing.JFrame {
         jPanel2.add(background_addProduct);
         background_addProduct.setBounds(0, 0, 640, 690);
 
-        jButton2.setText("ADD");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        AddEmpAddButton.setText("ADD");
+        AddEmpAddButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                AddEmpAddButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2);
-        jButton2.setBounds(270, 550, 80, 40);
+        jPanel2.add(AddEmpAddButton);
+        AddEmpAddButton.setBounds(270, 550, 80, 40);
 
-        jButton3.setText("CLEAR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        AddEmpClearButton.setText("CLEAR");
+        AddEmpClearButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                AddEmpClearButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3);
-        jButton3.setBounds(350, 560, 90, 30);
+        jPanel2.add(AddEmpClearButton);
+        AddEmpClearButton.setBounds(350, 560, 90, 30);
 
-        jButton1.setText("CANCEL");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        AddEmpCancelButton.setText("CANCEL");
+        AddEmpCancelButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                AddEmpCancelButtonActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1);
-        jButton1.setBounds(450, 560, 100, 30);
+        jPanel2.add(AddEmpCancelButton);
+        AddEmpCancelButton.setBounds(450, 560, 100, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -175,30 +176,35 @@ public class AddProduct extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ProductPage prp = new ProductPage(this.getName());
-        prp.getLblUser().setText("Welcome "+this.getName());
-        
+    private void AddEmpCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddEmpCancelButtonActionPerformed
         this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+        ProductPage prp = new ProductPage(this.getName());
+        prp.getLblUser().setText("Welcome, "+this.getName());
+        prp.setVisible(true);
+        prp.setExtendedState(JFrame.MAXIMIZED_BOTH);
+    }//GEN-LAST:event_AddEmpCancelButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void AddEmpAddButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddEmpAddButtonActionPerformed
         if (txtProductCode.getText().trim().equals("") || txtProductName.getText().trim().equals("")
             || comboProductType.getSelectedItem().equals("") || comboCategory.getSelectedItem().equals("")
             || txtStandardCost.getText().trim().equals("") || txtMarkupCost.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Failed! Please fill up!");
         }else {
             if (JOptionPane.showConfirmDialog(null, "Are you sure you want to add this?", "Confirm Adding", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            apc.add(this);
-           ProductPage pp = new ProductPage();
-            } 
+                apc.add(this);
+                this.dispose();
+                ProductPage prp = new ProductPage(this.getName());
+                prp.getLblUser().setText("Welcome, "+this.getName());
+                prp.setVisible(true);
+                prp.setExtendedState(JFrame.MAXIMIZED_BOTH);
+            }
         }
-        this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+        
+    }//GEN-LAST:event_AddEmpAddButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void AddEmpClearButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddEmpClearButtonActionPerformed
         apc.clear(this);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_AddEmpClearButtonActionPerformed
 
     private void txtStandardCostKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtStandardCostKeyReleased
 
@@ -276,12 +282,12 @@ public class AddProduct extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton AddEmpAddButton;
+    private javax.swing.JButton AddEmpCancelButton;
+    private javax.swing.JButton AddEmpClearButton;
     private javax.swing.JLabel background_addProduct;
     private javax.swing.JComboBox<String> comboCategory;
     private javax.swing.JComboBox<String> comboProductType;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtMarkupCost;
     private javax.swing.JTextField txtProductCode;

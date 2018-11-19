@@ -20,10 +20,10 @@ import models.ProductModel;
  */
 public class ProductPageController {
      
-     public void deleteProduct(String id) {
+     public void deleteProduct(String prodId) {
          ProductModel pm = new ProductModel();
          
-         pm.setProduct_code(id);
+         pm.setProduct_code(prodId);
          
          if (pm.delete() == 1){
              JOptionPane.showMessageDialog(null, "Successfully Deleted!");

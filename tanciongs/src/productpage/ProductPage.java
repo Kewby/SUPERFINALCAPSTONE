@@ -23,10 +23,21 @@ import models.ProductModel;
  * @author Allysha, Kirby
  */
 public class ProductPage extends javax.swing.JFrame {
-
+    
+    
     /**
      * Creates new form ProductPage
      */
+    private String name;
+    
+    public String getName(){
+        return name;
+    }
+    
+    public void setName(String name){
+        this.name = name;
+    }
+    
     
     public ProductPage(){
         initComponents();
@@ -232,8 +243,23 @@ public class ProductPage extends javax.swing.JFrame {
         if (tblProduct.getSelectedRow() != -1) {
             String productNumber;
             ProductPageController ppc = new ProductPageController(); //links productpagecontroller
-            productNumber = tblProduct.getValueAt(tblProduct.getSelectedRow(), 0).toString();
+            productNumber = tblProduct.getModel().getValueAt(tblProduct.getSelectedRow(), 0).toString();
             ppc.deleteProduct(productNumber); //calls the delete function from the controller
+            
+            ProductModel pm = new ProductModel();
+            ResultSet rs = null;
+            String val = pm.determineBranch(name);  
+
+            if(val.compareTo("1")==0){
+                comboBranch.setSelectedIndex(0);
+                rs = pm.viewAll2("1");
+            }else{
+                comboBranch.setSelectedIndex(1);
+                rs = pm.viewAll2("2");
+        }
+        
+        tblProduct.setModel(DbUtils.resultSetToTableModel(rs));
+        
         } else {
             JOptionPane.showMessageDialog(null, "Please select an item first!");
         }
@@ -250,6 +276,7 @@ public class ProductPage extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         //links to an add product form. the admin will fill up there.
+        this.dispose();
         AddProduct ap = new AddProduct(this.getName());
         ap.setVisible(true);
     }//GEN-LAST:event_btnAddActionPerformed
@@ -296,6 +323,7 @@ public class ProductPage extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(null, "Please select an item first!");
         }
+        this.dispose();
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void searchProductActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchProductActionPerformed

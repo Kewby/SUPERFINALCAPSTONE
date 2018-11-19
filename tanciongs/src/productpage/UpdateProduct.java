@@ -10,6 +10,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 /**
@@ -208,11 +209,13 @@ public class UpdateProduct extends javax.swing.JFrame {
             if (JOptionPane.showConfirmDialog(null, "Are you sure you want to update this?", "Confirm Update",
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             updc.update(this);
+            this.dispose();
+            ProductPage prp = new ProductPage(this.getName());
+            prp.getLblUser().setText("Welcome, "+this.getName());
+            prp.setVisible(true);
+            prp.setExtendedState(JFrame.MAXIMIZED_BOTH);    
+            }
         }
-        }
-
-        ProductPage prp = new ProductPage(this.getName());
-        prp.getLblUser().setText("Welcome "+this.getName());
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -207,7 +207,7 @@ public class AddEmp extends javax.swing.JFrame {
             if (JOptionPane.showConfirmDialog(null, "Are you sure you want to add this?", "Confirm Adding",
                     JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
                 aec.add(this);
-                
+                this.dispose();
                 PeoplePage peop = new PeoplePage(this.getName());
                 peop.getLblUser().setText("Welcome, "+this.getName());
                 peop.setVisible(true);
