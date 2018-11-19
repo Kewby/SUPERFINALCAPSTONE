@@ -96,9 +96,9 @@ public class UpdateProduct extends javax.swing.JFrame {
         txtStandardCost = new javax.swing.JTextField();
         txtMarkupCost = new javax.swing.JTextField();
         background_updateProduct = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        UpdateProdClear = new javax.swing.JButton();
+        UpdateProdCancel = new javax.swing.JButton();
+        UpdateProdUpdate = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -151,32 +151,32 @@ public class UpdateProduct extends javax.swing.JFrame {
         jPanel2.add(background_updateProduct);
         background_updateProduct.setBounds(0, 0, 600, 700);
 
-        jButton3.setText("CLEAR");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        UpdateProdClear.setText("CLEAR");
+        UpdateProdClear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                UpdateProdClearActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3);
-        jButton3.setBounds(370, 560, 80, 30);
+        jPanel2.add(UpdateProdClear);
+        UpdateProdClear.setBounds(370, 560, 80, 30);
 
-        jButton1.setText("CANCEL");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        UpdateProdCancel.setText("CANCEL");
+        UpdateProdCancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                UpdateProdCancelActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton1);
-        jButton1.setBounds(460, 560, 100, 30);
+        jPanel2.add(UpdateProdCancel);
+        UpdateProdCancel.setBounds(460, 560, 100, 30);
 
-        jButton2.setText("UPDATE");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        UpdateProdUpdate.setText("UPDATE");
+        UpdateProdUpdate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                UpdateProdUpdateActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton2);
-        jButton2.setBounds(260, 560, 100, 30);
+        jPanel2.add(UpdateProdUpdate);
+        UpdateProdUpdate.setBounds(260, 560, 100, 30);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -196,11 +196,11 @@ public class UpdateProduct extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboCategoryActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void UpdateProdClearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateProdClearActionPerformed
         updc.clear(this);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_UpdateProdClearActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void UpdateProdUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateProdUpdateActionPerformed
        if (txtItemCode.getText().trim().equals("") || txtProductName.getText().trim().equals("")
             || comboProductType.getSelectedItem().equals("") || comboCategory.getSelectedItem().equals("")
             || txtStandardCost.getText().trim().equals("")) {
@@ -216,14 +216,15 @@ public class UpdateProduct extends javax.swing.JFrame {
             prp.setExtendedState(JFrame.MAXIMIZED_BOTH);    
             }
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_UpdateProdUpdateActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        ProductPage prp = new ProductPage(this.getName());
-        prp.getLblUser().setText("Welcome "+this.getName());
-        
-        this.dispose();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void UpdateProdCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateProdCancelActionPerformed
+            this.dispose();
+            ProductPage prp = new ProductPage(this.getName());
+            prp.getLblUser().setText("Welcome, "+this.getName());
+            prp.setVisible(true);
+            prp.setExtendedState(JFrame.MAXIMIZED_BOTH);
+    }//GEN-LAST:event_UpdateProdCancelActionPerformed
 
     private void comboProductTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboProductTypeActionPerformed
         // TODO add your handling code here:
@@ -291,12 +292,12 @@ public class UpdateProduct extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton UpdateProdCancel;
+    private javax.swing.JButton UpdateProdClear;
+    private javax.swing.JButton UpdateProdUpdate;
     private javax.swing.JLabel background_updateProduct;
     private javax.swing.JComboBox<String> comboCategory;
     private javax.swing.JComboBox<String> comboProductType;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtItemCode;
     private javax.swing.JTextField txtMarkupCost;
